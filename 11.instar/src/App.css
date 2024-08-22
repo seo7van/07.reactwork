@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+/* 제목 꾸미기 App.js에서 "맛집추천 INSTAR" */
+.title {
+ height: 70px;
+ line-height: 70px;
+ background-color: orange;
+ color: white;
+}
+
+/* 하위 list 꾸미기 App.js에서 "list" */
+.list {
+  text-align: left;
+  padding-left: 20px;
+  border-bottom: 1px solid darkolivegreen;
+}
+
+span {
+  margin-left: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* 모달창 꾸미기 App.js에서 "modal" */
+.modal {
+  margin-top: 20px;
+  text-align: left;
+  background-color: rgb(208, 222, 182);
+  padding: 5px 0 5px 10px;
+}

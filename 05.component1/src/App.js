@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import { React } from 'react';
 
 const user = {
   firstName : "Hong",
   lastName : "GilDong"
 }
 
-function Student(u){
-  return u.firstName + "" + u.lastName;
+function Student(u) {
+  return u.firstName + " " + u.lastName;
 }
 
 function App() {
@@ -20,12 +18,12 @@ function App() {
       <h3>component 실습</h3>
 
       {isStudent ? <h4>{Student(user)}님 환영합니다</h4> : <h4>학원생이 아닙니다</h4>}
+    
       <Com1></Com1>
       <Com1/>
     </div>
   );
 }
-
 
 function Com1() {
   return (
@@ -40,6 +38,6 @@ function Com1() {
       </ul>
     </>
   )
-  
 }
+
 export default App;

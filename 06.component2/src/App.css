@@ -2,13 +2,13 @@
   text-align: center;
 }
 
-header {
-  background-color: green;
+header, footer {
+  background-color: cadetblue;
   color:white;
   height: 15vh;
   line-height: 15vh;
 }
 
 section {
- height: 15vh;
+  height : 70vh;
 }

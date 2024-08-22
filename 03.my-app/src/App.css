@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-ul {
-  text-align: left;
-}
-
-h3 {
+ul, h3 {
   text-align: left;
 }

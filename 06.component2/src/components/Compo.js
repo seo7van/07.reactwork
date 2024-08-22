@@ -1,5 +1,4 @@
 const Compo1 = () => {
-
     return (
         <>
             <h2>Component 사용</h2>
