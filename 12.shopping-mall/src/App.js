@@ -1,66 +1,85 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
-import clothes1 from './img/clothes1.png';
+import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import pList from './data/ProductList';
-// import { num1, num2 } from './data/ProductList';
+import { Routes, Route, Navigate, useNavigate, Outlet } from 'react-router-dom';
+import Detail from './pages/Detail';
+import axios from 'axios';
+
+/*
+  * ajax로 서버로부터 데이터 얻어오기
+    1. 설치하기 : npm i axios
+*/
 
 function App() {
   let [clothes, setClothes] = useState(pList);
+
+  // 페이지의 이동을 도와주는 함수
+  let navigate = useNavigate();
 
   return (
     <div className="App">
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">Fashion Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
+
+            <Nav.Link onClick={() => {navigate('/') }}>Home</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/detail') }}>Detail</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/cart') }}>Cart</Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
 
-      <div className='main-bg'/>
+      <Routes>
+        <Route path='/' element={
+          <>
+            <div className='main-bg'/>
+              <Container>
+                <Row>
+                  { 
+                    clothes.map((p, i)=>{
+                      return(
+                        <PListCol clothes={p} i={i+1}/>
+                      )
+                    })
+                  }
+                </Row>
+              </Container>
 
-      <Container>
-        <Row>
-          { 
-            clothes.map((p, i)=>{
-              return(
-                <PListCol clothes={p} i={i+1}/>
-              )
-            })
-          }
-        </Row>
-      </Container>
+              <Button variant="info" onClick={() => {
+              axios.get('https://raw.githubusercontent.com/professorjiwon/data/main/data3.json')
+                   .then(result => {
+                      console.log(result.data);
+                      let copy = [...result.data, ...clothes];
+                      setClothes(copy);
+                   })
+                   .catch(() => {
+                      console.log('실패');
+                      alert('더이상 상품이 없습니다');
+                   })
+            }}>서버에서 데이터 가져오기</Button>
+          </>
+        }/>
+        <Route path='/detail/:index' element={ <Detail clothes={clothes} bg="green" /> } />
+        <Route path='*' element={<div>없는 페이지 입니다.</div>} />
+      </Routes>
     </div>
   );
 }
-
+        
 function PListCol(props) {
-return (
-<>
-<Col lg={4}>
-  <img src={`${process.env.PUBLIC_URL}/img/clothes${props.i}.png`} />
-  <h4>{props.clothes.title}</h4>
-  <p>{props.clothes.price}</p>
-</Col>
-</>
-)
+  return (
+    <>
+      <Col lg={4}>
+        <img src={`${process.env.PUBLIC_URL}/img/clothes${props.i}.png`} />
+        <h4>{props.clothes.title}</h4>
+        <p>{props.clothes.price}</p>
+      </Col>
+    </>
+  )
 }
-/*
-매우 작은 기기(모바일) - xs{} 너비가 768px미만인 화면
-작은 기기(태블릿) - sm{} 너비가 992px미만인 화면
-중간 기기(노트북) - md{} 너비가 1200px미만인 화면
-큰 기기(데스크탑) - lg{} 너비가 1200px이상인 화면
 
-- 한행에 12개의 열을 가진다(중간기기이상일 때)
-<Col md={4}>
-<Col md={4}>
-<Col md={2}>
-<Col md={2}>
-*/
 
 export default App;
