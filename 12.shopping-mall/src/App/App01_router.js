@@ -2,9 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
-import pList from './data/ProductList';
+import pList from '../data/ProductList';
 import { Routes, Route, Navigate, useNavigate, Outlet } from 'react-router-dom';
-import Detail from './pages/Detail';
+import Detail from '../pages/Detail';
 import clothes1 from './img/clothes1.png';  //한번도 안써서 회색으로 뜨는것. 삭제 해도 됨
 // import { num1, num2 } from './data/ProductList';
 

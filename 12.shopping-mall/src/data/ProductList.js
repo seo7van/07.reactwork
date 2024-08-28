@@ -9,21 +9,21 @@ export {num1, num2};
 let pList = [
     {
         id : 0,
-        title : "vest",
-        content : "Made in States",
-        price : 20000
+        title : "2024 pre-fall collection",
+        content : "'Ready, Set, Ok'",
+        price : "'Ready, Set, ok'"
     },
     {
         id : 1,
-        title : "blouse",
-        content : "Made in Seoul",
-        price : 35000
+        title : "2024 HOT SUMMER",
+        content : "‘36.5’",
+        price : "‘36.5’"
     },
     {
         id : 2,
-        title : "jacket",
-        content : "Made in France",
-        price : 50000
+        title : "2024 capsule",
+        content : "‘Matin Kim Global Record : Paris & London’",
+        price : "‘Matin Kim Global Record : Paris & London’"
     }
 ]
 
